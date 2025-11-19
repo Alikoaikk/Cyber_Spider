@@ -1,72 +1,86 @@
-# Spider & Scorpion - Web Crawler & Metadata Analysis Suite
+# 🛡️ Cybersecurity Toolkit
 
 <p align="center">
-  <img src="Spiderscorpion.png" alt="Spider & Scorpion" width="500"/>
+  <img src="Spiderscorpion.png" alt="Cybersecurity Toolkit" width="500"/>
 </p>
 
-A comprehensive toolkit combining powerful web scraping and image metadata analysis capabilities.
+A comprehensive collection of cybersecurity tools for web scraping, metadata analysis, authentication, and anonymous hosting.
+
+<div align="center">
+
+![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg)
+![License](https://img.shields.io/badge/License-Educational-green.svg)
+![Status](https://img.shields.io/badge/Status-Active-success.svg)
+
+</div>
 
 ---
 
 ## 📋 Table of Contents
 
 - [Overview](#overview)
-- [Spider - Web Image Crawler](#-spider---web-image-crawler)
-- [Scorpion - Metadata Viewer](#-scorpion---metadata-viewer)
-- [Installation](#installation)
+- [Projects](#projects)
+  - [Spider - Web Image Crawler](#-spider---web-image-crawler)
+  - [Scorpion - Metadata Viewer](#-scorpion---metadata-viewer)
+  - [OTP Generator](#-otp-generator)
+  - [Tor Hidden Service](#-tor-hidden-service)
 - [Quick Start](#quick-start)
-- [Security & Privacy](#security--privacy)
+- [Requirements](#requirements)
+- [Security Notice](#security-notice)
+- [License](#license)
 
 ---
 
 ## 🎯 Overview
 
-This suite contains two complementary tools for web reconnaissance and digital forensics:
+This repository contains four distinct cybersecurity tools, each designed for specific security research and educational purposes:
 
-1. **🕷️ Spider** - Recursively crawls websites and downloads images
-2. **🦂 Scorpion** - Extracts and analyzes comprehensive image metadata
-
-Perfect for OSINT (Open Source Intelligence), digital forensics, and security research.
+1. **Spider** - Recursive web crawler for image collection
+2. **Scorpion** - EXIF and metadata extraction tool
+3. **OTP Generator** - RFC 4226 compliant HOTP implementation
+4. **Tor Hidden Service** - Anonymous .onion hosting platform
 
 ---
 
-## 🕷️ Spider - Web Image Crawler
+## 📦 Projects
 
-### Description
+### 🕷️ Spider - Web Image Crawler
 
-Spider is a powerful Python-based web crawler that recursively downloads images from websites. It can operate in single-page or recursive mode, crawling through links to discover and download all images.
+**Location:** `spider/`
 
-### Features
+A powerful recursive web crawler that downloads images from websites.
 
-- 🔄 **Recursive Crawling** - Navigate through website links with configurable depth
-- 📥 **Automatic Downloads** - Save all discovered images locally
-- 🌐 **Multiple Formats** - Supports JPG, PNG, GIF, BMP, and more
-- 🔗 **Smart Link Following** - Stays within the same domain
-- ⚡ **Error Handling** - Robust request management and retry logic
-- 📊 **Progress Tracking** - Monitor crawling progress in real-time
+#### Features
+- ✅ Recursive crawling with depth control
+- ✅ Multiple image format support
+- ✅ Efficient link parsing
+- ✅ Error handling and retry logic
 
-### Usage
-
-#### Basic Usage (Single Page)
-
+#### Quick Start
 ```bash
 cd spider
+python main.py -r -l 3 https://example.com
+```
+
+#### Usage
+
+**Basic Usage (Single Page)**
+```bash
 python main.py <URL>
 ```
 
-#### Recursive Mode
-
+**Recursive Mode**
 ```bash
 python main.py -r <URL>
 ```
 
-#### With Custom Depth
-
+**With Custom Depth**
 ```bash
 python main.py -r -l <DEPTH> <URL>
 ```
 
-### Arguments
+#### Arguments
 
 | Argument | Description | Default |
 |----------|-------------|---------|
@@ -74,75 +88,44 @@ python main.py -r -l <DEPTH> <URL>
 | `-r` | Enable recursive crawling | Disabled |
 | `-l LEVEL` | Maximum recursion depth | 5 |
 
-### Output
-
-Downloaded images are saved to the `./data/` directory by default.
-
-### Example
-
-```bash
-# Download all images from a single page
-python main.py https://example.com
-
-# Recursively crawl website with depth of 3
-python main.py -r -l 3 https://example.com
-```
-
-### Project Structure
-
-```
-spider/
-├── main.py           # Entry point
-├── spider.py         # Core spider logic
-├── spider_cloud.py   # Cloud spider implementation
-└── parse.py          # Argument parser
-```
-
 ---
 
-## 🦂 Scorpion - Metadata Viewer
+### 🦂 Scorpion - Metadata Viewer
 
-### Description
+**Location:** `scorpion/`
 
-Scorpion is a specialized metadata extraction tool that analyzes image files and displays detailed information including file properties, image specifications, and EXIF data. Features both CLI and GUI interfaces.
+Extract and analyze comprehensive image metadata with CLI and GUI interfaces.
 
-### Features
+#### Features
+- ✅ EXIF data extraction
+- ✅ File property analysis
+- ✅ Dual interface (CLI/GUI)
+- ✅ Batch processing support
 
-- 📊 **Complete Metadata Extraction** - File info, image properties, EXIF data
-- 🖥️ **Dual Interface** - Command-line and graphical user interface
-- 🎨 **Image Analysis** - Format, dimensions, color mode details
-- 📁 **File Properties** - Size, creation date, modification date
-- 🔍 **Batch Processing** - Analyze multiple images at once
-- ✅ **Format Validation** - Automatic file type checking
-- 📸 **EXIF Parsing** - Camera settings, GPS, timestamps, device info
-
-### Usage
-
-#### CLI Mode - Single Image
-
+#### Quick Start
 ```bash
 cd scorpion
+python scorpion.py -gui
+```
+
+#### Usage
+
+**CLI Mode - Single Image**
+```bash
 python scorpion.py image.jpg
 ```
 
-#### CLI Mode - Multiple Images
-
+**CLI Mode - Multiple Images**
 ```bash
 python scorpion.py image1.jpg image2.png image3.gif
 ```
 
-#### GUI Mode
-
+**GUI Mode**
 ```bash
 python scorpion.py -gui
 ```
 
-The GUI provides:
-- Visual file browser
-- Formatted metadata display
-- Easy navigation between multiple images
-
-### Extracted Information
+#### Extracted Information
 
 | Category | Information |
 |----------|-------------|
@@ -150,169 +133,230 @@ The GUI provides:
 | **Image Info** | Format (JPG/PNG/GIF/etc.), Color mode, Dimensions (width × height) |
 | **EXIF Data** | Camera settings, GPS coordinates, Timestamps, Device info, and more |
 
-### Supported Formats
+---
 
-- ✅ JPEG / JPG
-- ✅ PNG
-- ✅ GIF
-- ✅ BMP
-- ✅ Other Pillow-supported formats
+### 🔐 OTP Generator
 
-### Example Output
+**Location:** `otp-generator/`
 
+<p align="center">
+  <img src="otp-generator/Gemini_Generated_Image_m0ouy5m0ouy5m0ou.png" alt="OTP Generator" width="400"/>
+</p>
+
+Secure HOTP-based one-time password generator following RFC 4226.
+
+#### Features
+- ✅ RFC 4226 compliant
+- ✅ Encrypted key storage
+- ✅ Counter-based generation
+- ✅ Cryptographic security (HMAC-SHA1)
+
+#### Quick Start
+```bash
+cd otp-generator
+echo "your64charhexkey" > key.hex
+python ft_otp.py -g key.hex
+python ft_otp.py -k  # Generate OTP
 ```
-=== example.jpg ===
-Size: 2,456,789 bytes
-Created: 2024-11-19 10:30:45
-Modified: 2024-11-19 10:35:12
-Format: JPEG
-Size: 1920 x 1080 pixels
 
-EXIF Data:
-  271: Apple
-  272: iPhone 15 Pro
-  306: 2024:11:19 10:30:45
-  ...
-```
+#### Commands
 
-### Project Structure
+| Command | Description |
+|---------|-------------|
+| `-g <file>` / `--generate-key <file>` | Store a new encryption key from file |
+| `-k` / `--get_otp` | Generate a new one-time password |
 
-```
-scorpion/
-├── scorpion.py       # Main CLI entry point
-└── gui.py            # GUI implementation
-```
+[📖 Full Documentation →](otp-generator/README.md)
 
 ---
 
-## 🚀 Installation
+### 🧅 Tor Hidden Service
 
-### Prerequisites
+**Location:** `tor-hidden-service/`
 
-- Python 3.x
-- pip (Python package installer)
+<p align="center">
+  <img src="tor-hidden-service/Gemini_Generated_Image_c0c49lc0c49lc0c4.png" alt="Tor Hidden Service" width="400"/>
+</p>
+
+Docker-based Tor hidden service with custom HTML hosting.
+
+#### Features
+- ✅ Automated .onion address generation
+- ✅ NGINX web server
+- ✅ SSH access for management
+- ✅ Fully containerized
+
+#### Quick Start
+```bash
+cd tor-hidden-service
+docker build -t tor-service .
+docker run -d -p 4242:4242 tor-service
+docker exec tor-service cat /var/lib/tor/hidden_service/hostname
+```
+
+#### Exposed Ports
+
+| Port | Service | Description |
+|------|---------|-------------|
+| 80 | HTTP (internal) | Web server, accessible via Tor |
+| 4242 | SSH | Remote management access |
+
+[📖 Full Documentation →](tor-hidden-service/README.md)
+
+---
+
+## 🚀 Quick Start
+
+### Clone Repository
+
+```bash
+git clone git@github.com:Alikoaikk/Spider.git
+cd Spider
+```
 
 ### Install Dependencies
 
+#### For Spider & Scorpion
 ```bash
 pip install requests beautifulsoup4 Pillow
 ```
 
-> **Note**: `tkinter` for GUI mode usually comes pre-installed with Python. If not available, install it via your system package manager:
-> - **Ubuntu/Debian**: `sudo apt-get install python3-tk`
-> - **macOS**: Included with Python
-> - **Windows**: Included with Python
-
----
-
-## 💻 Quick Start
-
-### Workflow Example
-
+#### For OTP Generator
 ```bash
-# Step 1: Crawl a website and download images
-cd spider
-python main.py -r -l 2 https://example.com
+pip install cryptography
+```
 
-# Step 2: Analyze downloaded images
-cd ../scorpion
-python scorpion.py -gui
-
-# Or analyze specific images from CLI
-python scorpion.py ../spider/data/*.jpg
+#### For Tor Hidden Service
+```bash
+# Requires Docker
+docker --version
 ```
 
 ---
 
-## 🔍 Use Cases
+## 📋 Requirements
 
-### Spider
-- 🔐 Security reconnaissance
-- 📦 Website backup and archival
-- 🎨 Asset collection for research
-- 📊 Content analysis and monitoring
+### System Requirements
+- **OS**: Linux, macOS, or Windows
+- **Python**: 3.8 or higher
+- **Docker**: Latest stable version (for Tor service)
 
-### Scorpion
-- 🔐 Digital forensics investigation
-- 📸 Photography metadata analysis
-- 🗺️ GPS location extraction
-- 📝 Image cataloging and documentation
-- 🔍 Verifying image authenticity and origin
+### Python Dependencies
+
+| Tool | Dependencies |
+|------|-------------|
+| Spider | `requests`, `beautifulsoup4` |
+| Scorpion | `Pillow`, `tkinter` |
+| OTP Generator | `cryptography` |
+| Tor Service | Docker only |
 
 ---
 
-## 🔒 Security & Privacy
+## 🔒 Security Notice
 
-### Important Notes
+### ⚠️ Important Warnings
 
-#### Spider Considerations
-- ⚠️ **Respect robots.txt** - Always check website crawling policies
-- ⚠️ **Terms of Service** - Ensure you have permission to scrape content
-- ⚠️ **Rate Limiting** - Avoid overwhelming target servers
-- ⚠️ **Legal Compliance** - Use only on authorized websites
-
-#### Scorpion Privacy Warning
-
-EXIF data may contain **sensitive information**:
-- 📍 GPS coordinates (exact location where photo was taken)
-- 📱 Camera/device serial numbers
-- ⏰ Precise timestamps
-- 👤 Device owner information
-
-**Always handle metadata responsibly and respect privacy laws.**
+- **Educational Use Only**: These tools are for learning and authorized testing
+- **Legal Compliance**: Ensure compliance with local laws and regulations
+- **Authorized Access**: Only use on systems you own or have permission to test
+- **Responsible Usage**: Do not use for malicious purposes
 
 ### Best Practices
 
 ✅ **DO:**
-- Obtain permission before crawling websites
-- Use in controlled, authorized environments
-- Respect privacy when analyzing images
-- Follow responsible disclosure practices
+- Use in controlled environments
+- Obtain proper authorization
+- Follow responsible disclosure
 - Keep software updated
+- Use strong passwords and encryption
 
 ❌ **DON'T:**
-- Crawl websites without permission
-- Share sensitive EXIF data without consent
-- Use for malicious purposes
+- Use on unauthorized systems
+- Share sensitive credentials
+- Host illegal content
 - Violate terms of service
-- Ignore legal restrictions
+- Ignore privacy laws
 
 ---
 
-## 🐛 Error Handling
+## 📊 Project Structure
 
-### Spider
-- Connection timeouts and retries
-- Invalid URL detection
-- HTTP error handling
-- File system error management
-
-### Scorpion
-- Invalid file path detection
-- Unsupported format validation
-- Corrupted image handling
-- Missing EXIF data gracefully handled
-- Permission error management
+```
+Spider/
+├── spider/               # Web crawler
+│   ├── main.py
+│   ├── spider.py
+│   ├── spider_cloud.py
+│   └── parse.py
+├── scorpion/             # Metadata viewer
+│   ├── scorpion.py
+│   └── gui.py
+├── otp-generator/        # HOTP implementation
+│   ├── ft_otp.py
+│   ├── htop.py
+│   ├── encryption.py
+│   ├── key_manager.py
+│   └── README.md
+├── tor-hidden-service/   # .onion hosting
+│   ├── Dockerfile
+│   ├── nginx.conf
+│   ├── torrc
+│   ├── sshd_config
+│   ├── index.html
+│   └── README.md
+├── Spiderscorpion.png
+└── README.md             # This file
+```
 
 ---
 
-## 📖 Additional Resources
+## 🤝 Contributing
 
+This is an educational project. If you find issues or have improvements:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+---
+
+## 📖 Resources
+
+### General Security
+- [OWASP Top 10](https://owasp.org/www-project-top-ten/)
+- [Cybersecurity Best Practices](https://www.cisa.gov/cybersecurity-best-practices)
+
+### Tool-Specific
+- [RFC 4226 - HOTP](https://tools.ietf.org/html/rfc4226)
+- [Tor Project](https://www.torproject.org/)
 - [BeautifulSoup Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
-- [Pillow Documentation](https://pillow.readthedocs.io/)
-- [EXIF Standard](https://www.exif.org/)
-- [OSINT Framework](https://osintframework.com/)
 
 ---
 
 ## 📄 License
 
-This project is part of a cybersecurity toolkit for educational purposes.
+This project is for **educational purposes only**.
+
+**Disclaimer**: The authors are not responsible for any misuse of these tools. Always ensure you have proper authorization before using any security tools.
+
+---
+
+## 🏗️ Development Status
+
+| Project | Status | Version |
+|---------|--------|---------|
+| Spider | ✅ Stable | 1.0 |
+| Scorpion | ✅ Stable | 1.0 |
+| OTP Generator | ✅ Stable | 1.0 |
+| Tor Hidden Service | ✅ Stable | 1.0 |
 
 ---
 
 <div align="center">
 
-**⚡ Crawl Smartly • Analyze Deeply • Stay Ethical**
+### 🛡️ Built for Education • Used Responsibly
+
+**⭐ If you found this helpful, consider starring the repository!**
 
 </div>

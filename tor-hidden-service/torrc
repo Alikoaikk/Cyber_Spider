@@ -1,0 +1,15 @@
+HiddenServiceDir /var/lib/tor/hidden_service/
+HiddenServicePort 80 127.0.0.1:80
+
+User debian-tor
+DataDirectory /var/lib/tor
+Log notice file /var/log/tor/notices.log
+
+RunAsDaemon 1
+
+# Performance optimizations for faster Tor connections
+LearnCircuitBuildTimeout 0
+CircuitBuildTimeout 10
+KeepalivePeriod 60 
+NewCircuitPeriod 15 
+MaxCircuitDirtiness 600 
