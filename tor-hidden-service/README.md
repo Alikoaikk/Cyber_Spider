@@ -1,6 +1,6 @@
 # 🧅 Tor Hidden Service - Dockerized .onion Server
 
-![Tor Hidden Service](Gemini_Generated_Image_c0c49lc0c49lc0c4.png)
+![Tor Hidden Service](tor-banner.png)
 
 A Docker-based Tor hidden service that hosts a custom HTML page accessible through the Tor network via a `.onion` address.
 

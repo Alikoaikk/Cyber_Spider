@@ -140,7 +140,7 @@ python scorpion.py -gui
 **Location:** `otp-generator/`
 
 <p align="center">
-  <img src="otp-generator/Gemini_Generated_Image_m0ouy5m0ouy5m0ou.png" alt="OTP Generator" width="400"/>
+  <img src="otp-generator/otp-banner.png" alt="OTP Generator" width="400"/>
 </p>
 
 Secure HOTP-based one-time password generator following RFC 4226.
@@ -175,7 +175,7 @@ python ft_otp.py -k  # Generate OTP
 **Location:** `tor-hidden-service/`
 
 <p align="center">
-  <img src="tor-hidden-service/Gemini_Generated_Image_c0c49lc0c49lc0c4.png" alt="Tor Hidden Service" width="400"/>
+  <img src="tor-hidden-service/tor-banner.png" alt="Tor Hidden Service" width="400"/>
 </p>
 
 Docker-based Tor hidden service with custom HTML hosting.

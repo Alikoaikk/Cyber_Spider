@@ -1,6 +1,6 @@
 # 🔐 OTP Generator - HOTP Implementation
 
-![OTP Generator](Gemini_Generated_Image_m0ouy5m0ouy5m0ou.png)
+![OTP Generator](otp-banner.png)
 
 A secure One-Time Password (OTP) generator based on the HMAC-based One-Time Password (HOTP) algorithm following RFC 4226 specifications.
 
