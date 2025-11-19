@@ -1,6 +1,8 @@
 # Spider & Scorpion - Web Crawler & Metadata Analysis Suite
 
-![Spider & Scorpion](Spiderscorpion.png)
+<p align="center">
+  <img src="Spiderscorpion.png" alt="Spider & Scorpion" width="500"/>
+</p>
 
 A comprehensive toolkit combining powerful web scraping and image metadata analysis capabilities.
 
